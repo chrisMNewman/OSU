@@ -1,0 +1,27 @@
+# -----------------------
+# file  :   README
+# name  :   Sang Shin
+# class :   CS 480
+# assig :   Milestone 2
+#
+#
+# description
+# ----------------------
+# Objective 1 of this milestone is to produce the scanner and symbol table for the project
+# Objective 2 formalize the data structure used for the tokens
+# Objective 3 to give you experience using the state-transition diagram as a design tool
+# Objective 4 is to give you experience in designing a program using a categorical style design
+# Objective 5 is to give you practice in designing test files based on the formal definitions
+#
+# files
+# ----------------------
+# Makefile
+# m2.fs
+# README
+# sangshin_milestone2_report.pdf
+#
+# execution
+# ----------------------
+# make
+# make clean
+# make clean all
