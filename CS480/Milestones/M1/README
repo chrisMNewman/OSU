@@ -1,0 +1,25 @@
+# -----------------------
+# file  :   README
+# name  :   Sang Shin
+# class :   CS 480
+# assig :   Milestone 1
+#
+#
+# description
+# ----------------------
+# Objective 1 is to introduce you to gforth. Gforth will be the machine we code to
+# Objective 2 is to emphasize the crucial role of generalized trees and generalized postorder traversal
+# Objective 3 is to get you to formulate a generalized expression tree data structure
+#
+# files
+# ----------------------
+# Makefile
+# m1.fs
+# README
+# sangshin_milestone1_report.pdf
+#
+# execution
+# ----------------------
+# make
+# make clean
+# make clean all
