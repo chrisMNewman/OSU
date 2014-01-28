@@ -12,8 +12,12 @@ type_names = [
         "NUMBER",
         "STRING",
         "NEWLINE",
-        "LPAR",
-        "RPAR",
+        "INDENT",
+        "DEDENT",
+        "LPAREN",
+        "RPAREN",
+        "LBRACK",
+        "RBRACK",
         "COLON",
         "COMMA",
         "SEMI",
@@ -53,7 +57,10 @@ type_names = [
         "DOUBLESTAREQUAL",
         "DOUBLESLASH",
         "DOUBLESLASHEQUAL",
-        "AT"
+        "AT",
+        "OP",
+        "<ERRORTOKEN>",
+        "<N_TOKENS>"
         ]
 
 rules = [
