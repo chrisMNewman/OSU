@@ -8,15 +8,15 @@
 #!/usr/bin/python
 
 terms = {
-            'sin'       : 'TRIG',
-            'cos'       : 'TRIG',
-            'tan'       : 'TRIG',
-            'stdout'    : 'PRINTSTMT',
-            'if'        : 'IFSTMT',
-            'while'     : 'WHILESTMT',
-            'true'      : 'BOOLEAN',
-            'false'     : 'BOOLEAN',
-            }
+        'sin'       : 'TRIG',
+        'cos'       : 'TRIG',
+        'tan'       : 'TRIG',
+        'stdout'    : 'PRINTSTMT',
+        'if'        : 'IFSTMT',
+        'while'     : 'WHILESTMT',
+        'true'      : 'BOOLEAN',
+        'false'     : 'BOOLEAN',
+        }
 
 rules = {
         '\d+'           : 'NUMBER',
@@ -57,13 +57,6 @@ class Lexer(object):
         self.rules = []
         self.terms = []
         self.skip_whitespace = skip_whitespace
-
-    def input(self, buff):
-        '''
-        Initialize the Lexer with a buffer as input
-        '''
-        self.buff = buff
-        self.pos = 0
 
 class LexerError(Exception):
     def __init__(self, pos):
