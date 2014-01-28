@@ -7,57 +7,37 @@
 # -------------------------------------
 #!/usr/bin/python
 
-type_names = [
-        "NAME",
-        "NUMBER",
-        "BOOLEAN",
-        "STRING",
-        "NEWLINE",
-        "LPAREN",
-        "RPAREN",
-        "LBRACK",
-        "RBRACK",
-        "COLON",
-        "COMMA",
-        "SEMICOLON",
-        "PLUS",
-        "MINUS",
-        "STAR",
-        "SLASH",
-        "MODULUS",
-        "VBAR",
-        "AMPER",
-        "LESS",
-        "GREATER",
-        "EQUAL",
-        "DOT",
-        "PERCENT",
-        "BACKQUOTE",
-        "LBRACE",
-        "RBRACE",
-        "EQEQUAL",
-        "NOTEQUAL",
-        "LESSEQUAL",
-        "GREATEREQUAL",
-        "AT",
-        "OP",
-        "<ERRORTOKEN>",
-        "<N_TOKENS>"
-        ]
+term_name = {
+            'sin'       : 'TRIG',
+            'cos'       : 'TRIG',
+            'tan'       : 'TRIG',
+            'stdout'    : 'PRINTSTMT',
+            'if'        : 'IFSTMT',
+            'while'     : 'WHILESTMT',
+            'true'      : 'BOOLEAN',
+            'false'     : 'BOOLEAN',
+            }
 
-rules = [
-        ('\d+',             'NUMBER'),
-        ('[a-zA-Z_]\w*',    'IDENTIFIER'),
-        ('\+',              'PLUS'),
-        ('\-',              'MINUS'),
-        ('\*',              'MULTIPLY'),
-        ('\/',              'DIVIDE'),
-        ('\(',              'LPAREN'),
-        ('\)',              'RPAREN'),
-        ('\[',              'LBRACK'),
-        ('\]',              'RBRACK'),
-        ('=',               'EQUALS'),
-        ]
+rules = {
+        '\d+'           : 'NUMBER',
+        '\d+.\d+'       : 'FLOAT',
+        '[a-zA-Z_]\w*'  : 'IDENTIFIER',
+        '\!'            : 'NOT',
+        '\+'            : 'PLUS',
+        '\-'            : 'MINUS',
+        '\*'            : 'MULTIPLY',
+        '\/'            : 'DIVIDE',
+        '\%'            : 'MODULUS',
+        '\^'            : 'CAROT',
+        '\||'           : 'OR',
+        '\&&'           : 'AND',
+        '\:='           : 'COLONEQUAL',
+        '\('            : 'LPAREN',
+        '\)'            : 'RPAREN',
+        '\['            : 'LBRACK',
+        '\]'            : 'RBRACK',
+        '='             : 'EQUALS',
+        }
 
 class Token(object):
     '''
