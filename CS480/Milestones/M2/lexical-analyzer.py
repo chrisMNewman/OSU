@@ -36,6 +36,23 @@ type_names = [
         "LESSEQUAL",
         "GREATEREQUAL",
         "TILDE",
+        "CIRCUMFLEX",
+        "LEFTSHIFT",
+        "RIGHTSHIFT",
+        "DOUBLESTAR",
+        "PLUSEQUAL",
+        "MINEQUAL",
+        "STAREQUAL",
+        "SLASHEQUAL",
+        "PERCENTEQUAL",
+        "AMPEREQUAL",
+        "VBAREQUAL",
+        "CIRCUMFLEXEQUAL",
+        "LEFTSHIFTEQUAL",
+        "RIGHTSHIFTEQUAL",
+        "DOUBLESTAREQUAL",
+        "DOUBLESLASH",
+        "DOUBLESLASHEQUAL",
         "AT"
         ]
 
