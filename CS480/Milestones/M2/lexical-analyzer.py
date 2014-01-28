@@ -31,7 +31,7 @@ rules = {
         '\^'            : 'CAROT',
         '\||'           : 'OR',
         '\&&'           : 'AND',
-        '\:='           : 'COLONEQUAL',
+        '\:='           : 'ASSIGNMENTEQUAL',
         '\('            : 'LPAREN',
         '\)'            : 'RPAREN',
         '\['            : 'LBRACK',
