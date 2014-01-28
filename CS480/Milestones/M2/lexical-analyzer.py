@@ -7,7 +7,7 @@
 # -------------------------------------
 #!/usr/bin/python
 
-term_name = {
+terms = {
             'sin'       : 'TRIG',
             'cos'       : 'TRIG',
             'tan'       : 'TRIG',
@@ -51,6 +51,19 @@ class Token(object):
 
     def __str__(self):
         return '<%s, %s, %s>' % (self.typ, self.val, self.pos)
+
+class Lexer(object):
+    def __init__(self, rules, terms, skip_whitespace=True):
+        self.rules = []
+        self.terms = []
+        self.skip_whitespace = skip_whitespace
+
+    def input(self, buff):
+        '''
+        Initialize the Lexer with a buffer as input
+        '''
+        self.buff = buff
+        self.pos = 0
 
 class LexerError(Exception):
     def __init__(self, pos):
