@@ -56,6 +56,18 @@ type_names = [
         "AT"
         ]
 
+rules = [
+        ('\d+',             'NUMBER'),
+        ('[a-zA-Z_]\w*',    'IDENTIFIER'),
+        ('\+',              'PLUS'),
+        ('\-',              'MINUS'),
+        ('\*',              'MULTIPLY'),
+        ('\/',              'DIVIDE'),
+        ('\(',              'LPAREN'),
+        ('\)',              'RPAREN'),
+        ('=',               'EQUALS'),
+        ]
+
 class Token(object):
     '''
     Token Structure.
