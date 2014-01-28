@@ -1,6 +1,6 @@
 # -----------------------
 # file  :   README
-# name  :   Sang Shin
+# name  :   Sang Shin | Chris Newman
 # class :   CS 480
 # assig :   Milestone 2
 #
@@ -16,9 +16,9 @@
 # files
 # ----------------------
 # Makefile
-# m2.fs
+# lexical_analyzer.py
 # README
-# sangshin_milestone2_report.pdf
+# sangshin_chrisnewman_milestone2_report.pdf
 #
 # execution
 # ----------------------
