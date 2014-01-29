@@ -1,118 +1,66 @@
 #!/usr/bin/python
 import sys
 
-operators = [
-        '+',
-        '-',
-        '*',
-        '**',
-        '/',
-        '//',
-        '%',
-        '<<',
-        '>>',
-        '&',
-        '|',
-        '^',
-        '~',
-        '<',
-        '>',
-        '<=',
-        '>=',
-        '==',
-        '!=',
-        '<>',
-        ':=',
-        ]
+# Global Constants
+FILE_NAME = "example-c-file.c"
 
-delimiters = [
-        '(',
-        ')',
-        '[',
-        ']',
-        '{',
-        '}',
-        '@',
-        '#',
-        ',',
-        ':',
-        '.',
-        '`',
-        '=',
-        ';',
-        '+=',
-        '-=',
-        '*=',
-        '/=',
-        '//=',
-        '%=',
-        '&=',
-        '|=',
-        '^=',
-        '>>=',
-        '<<=',
-        '**=',
-        ]
-
-keywords = [
-        'include',
-        'void',
-        'printf',
-        'stdout',
-        'if',
-        'while',
-        'let',
-        'bool',
-        'int',
-        'float',
-        'string',
-        ]
-                
 character_buffer = []
 token_table = []
 
 class Lexer(object):
-    def __init__(self, operators, delimiters, keywords, skip_whitespace=True):
-        self.operators = operators
-        self.delimiters = delimiters
-        self.keywords = keywords
+    def __init__(self, skip_whitespace=True):
+        pass
 
-    def next_input(self, character_buffer):
+    def tokenize(self, character_buffer):
         self.character_buffer = character_buffer
-        for character, next_character in zip(character_buffer, character_buffer[1::]):
-            check_operator = self.check_for_operators(character)
-            if check_operator == False:
-                check_delimiter = self.check_for_delimiters(character)
-                if check_delimiter == False:
-                    check_keywords = self.check_for_keywords(character)
-    
-    def check_for_operators(self, character):
-        for op in self.operators:
-            if op == character:
-                token_table.append([character, "OP"])
-                return True
-            else:
-                pass
-        return False
-    
-    def check_for_delimiters(self, character):
-        for delim in self.delimiters:
-            if delim == character:
-                token_table.append([character, "DELIMITER"])
-                return True
-            else:
-                pass
-        return False
-    
-    def check_for_keywords(self, character):
-        for word in self.keywords:
-            if word == character:
-                token_table.append([character, "KEYWORD"])
-                return True
-            else:
-                pass
-        return False
+        skip_next_iteration = False
+        for i in xrange(len(self.character_buffer)):
+            if skip_next_iteration == True:
+                skip_next_iteration = False
+                continue
 
+            if self.character_buffer[i] == '{' or \
+                    self.character_buffer[i] == '}' or \
+                    self.character_buffer[i] == '[' or \
+                    self.character_buffer[i] == ']' or \
+                    self.character_buffer[i] == '(' or \
+                    self.character_buffer[i] == ')':
+                        token_table.append([self.character_buffer[i], "DELIMITER"])
+                        continue
+
+            if self.character_buffer[i] == '+' or \
+                    self.character_buffer[i] == '-' or \
+                    self.character_buffer[i] == '*' or \
+                    self.character_buffer[i] == '/' or \
+                    self.character_buffer[i] == '%' or \
+                    self.character_buffer[i] == '=' or \
+                    self.character_buffer[i] == '#' or \
+                    self.character_buffer[i] == '%' or \
+                    self.character_buffer[i] == 'and' or \
+                    self.character_buffer[i] == 'or':
+                        token_table.append([self.character_buffer[i], "OPERATOR"])
+                        continue
+
+            # Regex for < and <=
+            if self.character_buffer[i] == '<' and self.character_buffer[i+1] == '=':
+                token_table.append([self.character_buffer[i] + self.character_buffer[i+1], "OPERATOR"])
+                skip_next_iteration = True
+
+            elif self.character_buffer[i] == '<' and self.character_buffer[i+1] != '=':
+                token_table.append([self.character_buffer[i], "OPERATOR"])
+
+            # Regex for > and >=
+            if self.character_buffer[i] == '>' and self.character_buffer[i+1] == '=':
+                token_table.append([self.character_buffer[i] + self.character_buffer[i+1], "OPERATOR"])
+                skip_next_iteration = True
+
+            elif self.character_buffer[i] == '>' and self.character_buffer[i+1] != '=':
+                token_table.append([self.character_buffer[i], "OPERATOR"])
+            
+            # Regex for !=
+            if self.character_buffer[i] == '!' and self.character_buffer[i+1] == '=':
+                token_table.append([self.character_buffer[i] + self.character_buffer[i+1], "OPERATOR"])
+    
     def universal_print(self, token_table):
         for token in token_table:
             print(token)
@@ -128,9 +76,9 @@ def initialize(filename):
         sys.exit()
 
 def main():
-    initialize("temp.c")
-    lx = Lexer(operators, delimiters, keywords)
-    lx.next_input(character_buffer)
+    initialize(FILE_NAME)
+    lx = Lexer()
+    lx.tokenize(character_buffer)
     lx.universal_print(token_table)
 
 if __name__ == '__main__':
