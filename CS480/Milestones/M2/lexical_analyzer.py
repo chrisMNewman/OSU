@@ -27,6 +27,7 @@ class Lexer(object):
             is_number_float = False
             is_string_complete = False
             is_id_complete = False
+            
             if skip_next_iteration == True:
                 skip_next_iteration = False
                 continue
@@ -91,11 +92,12 @@ class Lexer(object):
                 i += 1
                 while is_string_complete == False:
                     if self.character_buffer[i] != '"':
-                        word = word + self.character_buffer[i]
-                        
+                        word = word + self.character_buffer[i]            
                     else:
                         is_string_complete = True
-                    i += 1 
+
+                    i += 1
+
                 end_idx = i
                 skip_mult_iteration = end_idx - start_idx - 1
                 token_table.append([word, "STRING"])
@@ -153,13 +155,14 @@ class Lexer(object):
                         is_number_float = True
                         word = word + self.character_buffer[i+1]
                         i += 1
+
                     i += 1
+
                 end_idx = i
                 skip_mult_iteration = end_idx - start_idx - 1
                 
                 if is_number_float == True:
                     token_table.append([word, "FLOAT"])
-                
                 else:
                     token_table.append([word, "NUMBER"])
         
