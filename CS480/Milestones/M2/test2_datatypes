@@ -1,0 +1,22 @@
+[stdout "Test 2 - Data types"]
+
+[stdout "Floats"]
+[let [cheese 3.0]]
+[let [cake 453.34e2]]
+[let [suprise 23.05e-6]]
+[+ 4.56 98.4e-7]
+
+[stdout "Boolean"]
+[let [cheese true]]
+[let [cake false]]
+[and cheese cake]
+[or cake cheese]
+
+[stdout "Strings"]
+[let [cheese "Golly"]]
+[let [cake "That's"]]
+[let [suprise "Amazing!"]]
+[stdout cheese]
+[stdout cake]
+[stdout suprise]
+[stdout 456.78e-9]
