@@ -105,11 +105,6 @@ class Lexer(object):
             # REGEX FOR IDENTIFIERS/KEYWORDS
             if self.character_buffer[i].isalpha():
                 start_idx = i
-                #while self.character_buffer[i].isalpha() or self.character_buffer[i] == '_':
-                #    if self.character_buffer[i+1].isdigit():
-                #        word = word + self.character_buffer[i+1]
-                #    word = word + self.character_buffer[i]
-                #    i += 1
                 while is_id_complete == False:
                     if self.character_buffer[i].isalpha():
                         word = word + self.character_buffer[i]
