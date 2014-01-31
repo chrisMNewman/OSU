@@ -24,6 +24,7 @@ def initialize(filename):
         sys.exit()
 
 def print_file(FILE_NAME, token_table):
+    ''' Print the token table to a file '''
     with open(FILE_NAME + '_out', 'a') as f:
         for token in token_table:
             f.write("%s\n" % token)
