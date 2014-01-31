@@ -15,8 +15,11 @@
 #
 # files
 # ----------------------
-# Makefile
+# main.py
 # lexical_analyzer.py
+# test1_arithmetic
+# test2_datatypes
+# test3_conditionals
 # README
 # sangshin_chrisnewman_milestone2_report.pdf
 #
