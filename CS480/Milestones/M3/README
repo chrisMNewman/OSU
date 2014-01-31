@@ -2,27 +2,16 @@
 # file  :   README
 # name  :   Sang Shin | Chris Newman
 # class :   CS 480
-# assig :   Milestone 2
+# assig :   Milestone 3
 #
 #
 # description
 # ----------------------
-# Objective 1 of this milestone is to produce the scanner and symbol table for the project
-# Objective 2 formalize the data structure used for the tokens
-# Objective 3 to give you experience using the state-transition diagram as a design tool
-# Objective 4 is to give you experience in designing a program using a categorical style design
-# Objective 5 is to give you practice in designing test files based on the formal definitions
 #
 # files
 # ----------------------
-# main.py
-# lexical_analyzer.py
-# test1_arithmetic
-# test2_datatypes
-# test3_conditionals
 # README
-# sangshin_chrisnewman_milestone2_report.pdf
+# sangshin_chrisnewman_milestone3_report.pdf
 #
 # execution
 # ----------------------
-# python main.py
