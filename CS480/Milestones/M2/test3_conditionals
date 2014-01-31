@@ -1,0 +1,15 @@
+[stdout "Test 3 - Conditional Expressions"]
+
+[let [king int]]
+[let [george int]]
+
+[stdout "If statements"]
+[= king 1]
+[= george 2]
+[if [< king george] [+ george 1]]
+[if [and king deorge [= george 0] [= 25 king]]
+
+[stdout "while statements"]
+[= king 0]
+[= george 10]
+[while [< king george] [+ king 1]]
