@@ -10,7 +10,7 @@ import sys
 import lexical_analyzer as lx
 
 # Global Constants
-FILE_NAME = 'example-c-file.c'
+FILE_NAME = ''
 
 character_buffer = []
 
@@ -27,6 +27,7 @@ def initialize(filename):
         sys.exit()
 
 def main():
+    FILE_NAME = raw_input("Enter Filename: ")
     initialize(FILE_NAME)
     token_table = lx.Lexer().tokenize(character_buffer)
     lx.Lexer().universal_print(token_table)
