@@ -25,6 +25,4 @@
 #
 # execution
 # ----------------------
-# make
-# make clean
-# make clean all
+# python main.py
