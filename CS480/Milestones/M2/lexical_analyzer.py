@@ -21,9 +21,12 @@ class Lexer(object):
         self.character_buffer = character_buffer
         skip_next_iteration = False
         skip_mult_iteration = 0
+        
         for i in xrange(len(self.character_buffer)):
             word = ''
-
+            is_number_float = False
+            is_string_complete = False
+            is_id_complete = False
             if skip_next_iteration == True:
                 skip_next_iteration = False
                 continue
@@ -32,7 +35,8 @@ class Lexer(object):
                 skip_mult_iteration -= 1
                 continue
             
-            # Regex for delimiters
+            # ---------------------------------------------------------------------------
+            # REGEX FOR DELIMITERS
             if self.character_buffer[i] == '{' or \
                     self.character_buffer[i] == '}' or \
                     self.character_buffer[i] == '[' or \
@@ -41,18 +45,16 @@ class Lexer(object):
                     self.character_buffer[i] == ')':
                         token_table.append([self.character_buffer[i], "DELIMITER"])
                         continue
-            
-            # Regex for operators
+
+            # ---------------------------------------------------------------------------
+            # REGEX FOR OPERATORS
             if self.character_buffer[i] == '+' or \
                     self.character_buffer[i] == '-' or \
                     self.character_buffer[i] == '*' or \
                     self.character_buffer[i] == '/' or \
                     self.character_buffer[i] == '%' or \
-                    self.character_buffer[i] == '=' or \
-                    self.character_buffer[i] == '#' or \
-                    self.character_buffer[i] == '%' or \
-                    self.character_buffer[i] == 'and' or \
-                    self.character_buffer[i] == 'or':
+                    self.character_buffer[i] == '^' or \
+                    self.character_buffer[i] == '=':
                         token_table.append([self.character_buffer[i], "OPERATOR"])
                         continue
 
@@ -76,19 +78,56 @@ class Lexer(object):
             if self.character_buffer[i] == '!' and self.character_buffer[i+1] == '=':
                 token_table.append([self.character_buffer[i] + self.character_buffer[i+1], "OPERATOR"])
                 skip_next_iteration = True
+            
+            # Regex for :=
+            if self.character_buffer[i] == ':' and self.character_buffer[i+1] == '=':
+                token_table.append([self.character_buffer[i] + self.character_buffer[i+1], "OPERATOR"])
+                skip_next_iteration = True
 
-            # Regex for alpha characters
+            # ---------------------------------------------------------------------------
+            # REGEX FOR STRINGS
+            if self.character_buffer[i] == '"':
+                start_idx = i
+                i += 1
+                while is_string_complete == False:
+                    if self.character_buffer[i] != '"':
+                        word = word + self.character_buffer[i]
+                        
+                    else:
+                        is_string_complete = True
+                    i += 1 
+                end_idx = i
+                skip_mult_iteration = end_idx - start_idx - 1
+                token_table.append([word, "STRING"])
+                continue
+
+            # ---------------------------------------------------------------------------
+            # REGEX FOR IDENTIFIERS/KEYWORDS
             if self.character_buffer[i].isalpha():
                 start_idx = i
-                while self.character_buffer[i].isalpha():
-                    word = word + self.character_buffer[i]
-                    i += 1
+                #while self.character_buffer[i].isalpha() or self.character_buffer[i] == '_':
+                #    if self.character_buffer[i+1].isdigit():
+                #        word = word + self.character_buffer[i+1]
+                #    word = word + self.character_buffer[i]
+                #    i += 1
+                while is_id_complete == False:
+                    if self.character_buffer[i].isalpha():
+                        word = word + self.character_buffer[i]
+                        i += 1
+                    elif self.character_buffer[i] == '_':
+                        word = word + self.character_buffer[i]
+                        i += 1
+                    elif self.character_buffer[i].isdigit():
+                        word = word + self.character_buffer[i]
+                        i += 1
+                    else:
+                        is_id_complete = True
                 
                 end_idx = i
                 skip_mult_iteration = end_idx - start_idx - 1
             
-            # Check for keywords. If not, then it must be an identifier
-            if word == 'include' or \
+            if word == 'or' or \
+                    word == 'and' or \
                     word == 'not' or \
                     word == 'sin' or \
                     word == 'cos' or \
@@ -100,23 +139,36 @@ class Lexer(object):
                     word == 'if' or \
                     word == 'while' or \
                     word == 'let' or \
-                    word == 'stdout':
+                    word == 'stdout' or \
+                    word == 'true' or \
+                    word == 'false':
                 token_table.append([word, "KEYWORD"])
             
-            elif word.isalpha():
+            elif word:
                 token_table.append([word, "IDENTIFIER"])
             
-            # Regex for digit numbers
+            # ---------------------------------------------------------------------------
+            # REGEX FOR FLOATING POINT AND INTEGERS
             if self.character_buffer[i].isdigit():
                 start_idx = i
-                while self.character_buffer[i].isdigit():
+                while self.character_buffer[i].isdigit() or self.character_buffer[i] == '-':
                     word = word + self.character_buffer[i]
+                    if self.character_buffer[i+1] == '.' or \
+                            self.character_buffer[i+1] == 'e':
+                        is_number_float = True
+                        word = word + self.character_buffer[i+1]
+                        i += 1
                     i += 1
                 end_idx = i
                 skip_mult_iteration = end_idx - start_idx - 1
-
-                token_table.append([word, "NUMBER"])
+                
+                if is_number_float == True:
+                    token_table.append([word, "FLOAT"])
+                
+                else:
+                    token_table.append([word, "NUMBER"])
         
+            # ---------------------------------------------------------------------------
         return token_table
     
     def universal_print(self, token_table):
