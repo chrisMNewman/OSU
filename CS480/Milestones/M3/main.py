@@ -1,0 +1,43 @@
+#-----------------------------------------------
+# file          : main.py
+# author        : Sang Shin | Chris Newman
+# date          : 02-11-2014
+# class         : CS 480 | Milestone #3
+# description   : Primary execution file
+# -----------------------------------------------
+#!/usr/bin/python
+import sys
+import lexical_analyzer as lx
+import token_parser as pr
+
+character_buffer = []
+
+def initialize(filename):
+    ''' Initialize by reading in the file and splitting all strings into characters '''
+    try:
+        with open(filename, 'r') as f:
+            for line in f.readlines():
+                for character in line:
+                    character_buffer.append(character)
+
+    except IOError:
+        print("Could not read file:", filename)
+        sys.exit()
+
+def print_file(FILE_NAME, token_table):
+    ''' Print the token table to a file '''
+    with open(FILE_NAME + '_out', 'a') as f:
+        for token in token_table:
+            f.write("%s\n" % token)
+    
+    print("%s_out file was created" % FILE_NAME)
+
+def main():
+    FILE_NAME = raw_input("Enter Filename: ")
+    initialize(FILE_NAME)
+    token_table = lx.Lexer().tokenize(character_buffer)
+    print_file(FILE_NAME, token_table)
+    pr.Parser().parse(token_table)
+
+if __name__ == '__main__':
+    main()
