@@ -28,8 +28,7 @@ class Parser(object):
         # Rule: [S]
         if char != '[' \
             or self.S(self.next()) != 1 \
-            or self.next() != ']' \
-            or self.ifnext() == 1:
+            or self.next() != ']':
             return 0
         return 1
 
@@ -69,7 +68,15 @@ class Parser(object):
         if self.expr(char) != 1:
             i = start
         else:
-            return 1
+            # Rule: expr S
+            char = self.next()
+            if char == ']':
+                i -= 1
+                return 1
+            elif self.S(char) != 1:
+                return 0
+            else:
+                return 1
         return 0
 
     def expr(self, char):
@@ -82,74 +89,61 @@ class Parser(object):
     def oper(self, char):
         global i
         start = i
-        if char != '[':
-            return 0
-        # Rule: := name oper
-        if self.next() != ':' \
+        # Rule: [:= name oper]
+        if char != '['\
+            or self.next() != ':' \
             or self.next() != '=' \
             or self.name(self.next()) \
             or self.oper(self.oper()) \
             or self.next() != ']':
             i = start
         else:
-            if self.next() == ']':
-                return 1
-            else: return 0
-        # Rule: binops oper oper
-        if self.binops(self.next()) != 1 \
+            return 1
+        # Rule: [binops oper oper]
+        if char != '[' \
+            or self.binops(self.next()) != 1 \
             or self.oper(self.next()) != 1 \
-            or self.oper(self.next()) != 1:
+            or self.oper(self.next()) != 1 \
+            or self.next() != ']':
             i = start
         else:
-            if self.next() == ']':
-                return 1
-            else: return 0
-        # Rule: unops oper
-        if self.unops(self.next()) != 1 \
-            or self.oper(self.next()) != 1:
+            return 1
+        # Rule: [unops oper]
+        if char != '[' \
+            or self.unops(self.next()) != 1 \
+            or self.oper(self.next()) != 1 \
+            or self.next() != ']':
             i = start
-        else:
-            if self.next() == ']':
-                return 1
-            else: return 0
+        else: return 1
         # Rule: constants
-        if self.constants(self.next()) != 1:
+        if self.constants(char) != 1:
             i = start
-        else:
-            if self.next() == ']':
-                return 1
-            else: return 0
+        else: return 1
         # Rule: name
-        if self.name(self.next()) != 1:
+        if self.name(char) != 1:
             i = start
-        else:
-            if self.next() == ']':
-                return 1
-            else: return 0
+        else: return 1
         return 0
 
     def binops(self, char):
         global i
         start = i
         # Check if equal to operators
-        if char != '+' or char != '-' or char != '*' or char != '/' or \
-             char != '%' or char != '^' or char != '=':
+        if char != '+' and char != '-' and char != '*' and char != '/' and \
+             char != '%' and char != '^' and char != '=' and char != ':=':
             i = start
         else: return 1
         # Check if equal to LT GT comparators
-        if char != '>' or char != '<' or char != '!':
+        if char != '>' and char != '<' and char != '!=' and char != '<=' \
+            and char != '>=':
             i = start
         else:
-            if self.next() != '=':
-                return 1
-            else:
-                i -= 1
                 return 1
         # Check if or or and
-        if char != 'o' or self.next() != 'r':
+        if char != "or":
             i = start
         else: return 1
-        if char != 'a' or self.next() != 'n' or self.next() != 'd':
+        if char != "and":
             i = start
         else: return 1
         return 0
@@ -158,26 +152,194 @@ class Parser(object):
         global i
         start = i
         # Rule: not
-        if char != 'n' or self.next() != 'o' or self.next() != 't':
+        if char != "not":
             i = start
         else: return 1
         # Rule: sin
-        if char != 's' or self.next() != 'i' or self.next() != 'n':
+        if char != "sin":
             i = start
         else: return 1
         # Rule: cos
-        if char != 'c' or self.next() != 'o' or self.next() != 's':
+        if char != "cos":
             i = start
         else: return 1
         # Rule: tan
-        if char != 't' or self.next() != 'a' or self.next() != 'n':
+        if char != "tan":
             i = start
         else: return 1
+        return 0
+
+    def constants(self, char):
+        global i
+        start = i
+        # Rule: strings
+        if self.strings(char) != 1:
+            i = start
+        else: return 1
+        # Rule: ints
+        if self.ints(char) != 1:
+            i = start
+        else: return 1
+        # Rule: floats
+        if self.floats(char) != 1:
+            i = start
+        else: return 1
+        return 0
+
+
+    def strings(self, char):
+        global i
+        start = i
+        char = tokens[i][1]
+        # Check for begninning quot mark
+        if char != "STRING": #if scanner did not determine string valid via reg expressions
+            return 0
+        else:
+            return 1
+
+    def name(self, char):
+        global i
+        start = i
+        char = tokens[i][1]
+        # Check for begninning quot mark
+        if char != "IDENTIFIER": #if scanner did not determine name valid via reg expressions
+            return 0
+        else:
+            return 1
+
+    def ints(self, char):
+        global i
+        start = i
+        char = tokens[i][1]
+        # Check for begninning quot mark
+        if char != "NUMBER": #if scanner did not determine int valid via reg expressions
+            return 0
+        else:
+            return 1
+
+    def floats(self, char):
+        global i
+        start = i
+        char = tokens[i][1]
+        # Check for begninning quot mark
+        if char != "FLOAT": #if scanner did not determine string valid via reg expressions
+            return 0
+        else:
+            return 1
 
     def stmts(self, char):
-        if char == 'b':
-            return 1
+        global i
+        start = i
+        # Rule: ifstmts
+        if self.ifstmts(char) != 1:
+            i = start
+        else: return 1
+        # Rule: whilestmts
+        if self.whilestmts(char) != 1:
+            i = start
+        else: return 1
+        # Rule: letstmts
+        if self.letstmts(char) != 1:
+            i = start
+        else: return 1
+        # Rule: printstmts
+        if self.printstmts(char) != 1:
+            i = start
+        else: return 1
         return 0
+
+    def printstmts(self, char):
+        global i
+        start = i
+        # Rule: [stdout oper]
+        if char != '[' or self.next() != "stdout" or self.oper(self.next()) != 1 \
+            or self.next() != ']':
+            return 0
+        else:
+            return 1
+
+    def ifstmts(self, char):
+        global i
+        start = i
+        # Rule: [if expr expr expr]
+        if char != '[' or self.next() != "if" or self.expr(self.next()) != 1 \
+            or self.expr(self.next()) != 1 or self.expr(self.next()) != 1 or self.next() != ']':
+            i = start
+        else: return 1
+        # Rule: [if expr expr]
+        if char != '[' or self.next() != "if" or self.expr(self.next()) != 1 or self.expr(self.next()) != 1 \
+            or self.next() != ']':
+            i = start
+        else: return 1
+        return 0
+
+    def whilestmts(self, char):
+        global i
+        start = i
+        # Rule: [while expr exprlist]
+        if char != '[' or self.next() != "while" or self.expr(self.next()) != 1 \
+            or self.exprlist(self.next()) != 1:
+            i = start
+        else: return 1
+        return 0
+
+    def exprlist(self, char):
+        global i
+        start = i
+        # Rule: expr exprlist
+        if self.expr(char) != 1 or self.exprlist(self.next()) != 1:
+            i = start
+        else: return 1
+        # Rule: expr
+        if self.expr(char) != 1:
+            i = start
+        else: return 1
+        return 0
+
+    def letstmts(self, char):
+        global i
+        start = i
+        # Rule: [let [varlist]]
+        if char != '[' or self.next() != "let" or self.next() != '[' \
+            or self.varlist(self.next()) != 1 or self.next() != ']' or self.next() != ']':
+            i = start
+        else: return 1
+        return 0
+
+    def varlist(self, char):
+        global i
+        start = i
+        # Rule: [name type] varlist
+        if char != '[' or self.name(self.next()) != 1 or self.type(self.next()) != 1 \
+            or self.next() != ']' or self.varlist(self.next()) != 1:
+            i = start
+        else: return 1
+        # Rule: [name type]
+        if char != '[' or self.name(self.next()) != 1 or self.type(self.next()) != 1 \
+            or self.next() != ']':
+            i = start
+        else: return 1
+        return 0
+
+    def type(self, char):
+        global i
+        start = i
+        # Rule: bool
+        if char != "bool":
+            i = start
+        else: return 1
+        # Rule: int
+        if char != "int":
+            i = start
+        else: return 1
+        # Rule: float
+        if char != "float":
+            i = start
+        else: return 1
+        # Rule: string
+        if char != "string":
+            i = start
+        else: return 1
 
     def ifnext(self):
         global tokens
@@ -191,16 +353,10 @@ class Parser(object):
         global i
         if self.ifnext():
             i += 1
-            print tokens[i][0]
             return tokens[i][0]
         # Expected character does not exist
         return ''
 
-    def back(self, pos):
-        global tokens
-        global i
-        i == pos
-        return tokens[i][0]
 
 if __name__ == '__main__':
     print("This is the parser.py file")
