@@ -25,11 +25,18 @@ class Parser(object):
         print self.T(tokens[0][0])
 
     def T(self, char):
+        global i
         # Rule: [S]
         if char != '[' \
             or self.S(self.next()) != 1 \
             or self.next() != ']':
+                return 0
+        if self.ifnext() == 1: #If something exists after T
+            print i
+            print self.next()
             return 0
+        else:
+            return 1
         return 1
 
     def S(self, char):
@@ -46,6 +53,7 @@ class Parser(object):
                 i -= 1
                 return 1
             if self.S(char) != 1:
+                i = start
                 return 0
             else:
                 return 1
@@ -61,6 +69,7 @@ class Parser(object):
                 i -= 1
                 return 1
             elif self.S(char) != 1:
+                i = start
                 return 0
             else:
                 return 1
@@ -74,16 +83,20 @@ class Parser(object):
                 i -= 1
                 return 1
             elif self.S(char) != 1:
+                i = start
                 return 0
             else:
                 return 1
         return 0
 
     def expr(self, char):
+        global i
+        start = i
         if self.oper(char):
             return 1
         if self.stmts(char):
             return 1
+        i = start
         return 0
 
     def oper(self, char):
@@ -254,9 +267,10 @@ class Parser(object):
         # Rule: [stdout oper]
         if char != '[' or self.next() != "stdout" or self.oper(self.next()) != 1 \
             or self.next() != ']':
-            return 0
+            i = start
         else:
             return 1
+        return 0
 
     def ifstmts(self, char):
         global i
@@ -278,7 +292,7 @@ class Parser(object):
         start = i
         # Rule: [while expr exprlist]
         if char != '[' or self.next() != "while" or self.expr(self.next()) != 1 \
-            or self.exprlist(self.next()) != 1:
+            or self.exprlist(self.next()) != 1 or self.next() != ']':
             i = start
         else: return 1
         return 0
@@ -340,11 +354,12 @@ class Parser(object):
         if char != "string":
             i = start
         else: return 1
+        return 0
 
     def ifnext(self):
         global tokens
         global i
-        if (i + 1) == len(tokens):
+        if (i + 1) >= len(tokens):
             return 0
         return 1
 
