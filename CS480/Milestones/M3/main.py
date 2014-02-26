@@ -1,7 +1,7 @@
-#-----------------------------------------------
+# -----------------------------------------------
 # file          : main.py
 # author        : Sang Shin | Chris Newman
-# date          : 02-11-2014
+# date          : 02-13-2014
 # class         : CS 480 | Milestone #3
 # description   : Primary execution file
 # -----------------------------------------------
@@ -24,20 +24,32 @@ def initialize(filename):
         print("Could not read file:", filename)
         sys.exit()
 
-def print_file(FILE_NAME, token_table):
+def print_token_file(filename, token_table):
     ''' Print the token table to a file '''
-    with open(FILE_NAME + '_out', 'a') as f:
+    with open(filename + '.out', 'a') as f:
         for token in token_table:
             f.write("%s\n" % token)
     
-    print("%s_out file was created" % FILE_NAME)
+    print("%s.out file was created" % filename)
+
+def print_parser_file(filename, result):
+    ''' Print the information output by Parser '''
+    with open("stutest.out", 'a') as f:
+        f.write("=============== %s ===============\n" % filename)
+        if filename == "ctest1" or filename == "ctest2" or filename == "ctest3":
+            f.write("CTEST RESULT:\t%s\n" % result)
+        
+        else:
+            f.write("PTEST RESULT:\t%s\n" % result)
+        
+        f.write("\n")
 
 def main():
-    FILE_NAME = raw_input("Enter Filename: ")
-    initialize(FILE_NAME)
+    TEST_FILE = sys.argv[1]
+    initialize(TEST_FILE)
     token_table = lx.Lexer().tokenize(character_buffer)
-    print_file(FILE_NAME, token_table)
-    pr.Parser().parse(token_table)
+    result = pr.Parser().parse(token_table)
+    print_parser_file(TEST_FILE, result)
 
 if __name__ == '__main__':
     main()

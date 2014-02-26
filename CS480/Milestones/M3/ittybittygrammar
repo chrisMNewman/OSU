@@ -1,0 +1,74 @@
+T = [S]
+
+S = [ ]
+    |   [S]
+    |   SS
+    |   expr
+
+expr =  oper
+        |   stmts
+
+oper =  [:= name oper]
+        |   [binops oper oper]
+        |   [unops oper]
+        |   constants
+        |   name
+
+binops =    +
+            |   -
+            |   *
+            |   /
+            |   %
+            |   ^
+            |   =
+            |   >
+            |   >=
+            |   <
+            |   <=
+            |   !=
+            |   or
+            |   and
+
+unops =     -
+            |   not
+            |   sin
+            |   cos
+            |   tan
+
+constants = strings
+            |   ints
+            |   floats
+
+strings = reg_ex for str literal in C
+
+name = reg_ex for ids in C
+
+ints = reg_ex for positive/negative ints in C
+
+floats = reg_ex for positive/negative doubles in C
+
+stmts = ifstmts
+        |   whilestmts
+        |   letstmts
+        |   printsmts
+
+printstmts = [stdout oper]
+
+ifstmts =   [if expr expr expr]
+            |   [if expr expr]
+
+whilestmts = [while expr exprlist]
+
+exprlist =  expr
+            |   expr exprlist
+
+letstmts = [let [varlist]]
+
+varlist =   [name type]
+            |   [name type] varlist
+
+type =  bool
+        |   int
+        |   float
+        |   string
+

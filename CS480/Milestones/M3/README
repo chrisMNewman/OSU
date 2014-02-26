@@ -7,11 +7,24 @@
 #
 # description
 # ----------------------
+# Development of a parser for CS480
 #
 # files
 # ----------------------
 # README
-# sangshin_chrisnewman_milestone3_report.pdf
+# sangshin_milestone3_report.pdf
+# ctest1
+# ctest2
+# ctest3
+# ittybittygrammar
+# lexical_analyzer.py
+# main.py
+# Makefile
+# ptest_all
+# ptests [Folder]
+# token_parser.py
 #
 # execution
 # ----------------------
+# make
+# make clean

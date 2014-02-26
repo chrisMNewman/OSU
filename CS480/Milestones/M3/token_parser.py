@@ -9,370 +9,555 @@
 #                 of a formal grammar
 # -----------------------------------------------
 #!/usr/bin/python
-
 import sys
+
+PASS = "PASS"
+FAIL = "FAIL"
 
 class Parser(object):
     ''' A simple parser that performs all analysis of a string of symbols '''
-    def __init__(self):
-            pass
+    def __init__(self, idx = 0, token_list = []):
+        self.idx = idx
+        self.token_list = token_list
 
     def parse(self, token_list):
-        global i
-        global tokens
-        i = 0
-        tokens = token_list
-        print self.T(tokens[0][0])
+        self.idx = 0
+        self.token_list = token_list
+        
+        if not self.token_list:
+            return FAIL
+        
+        else:
+            return self.T(self.token_list[0][0])
 
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     T = [S]
     def T(self, char):
-        global i
         # Rule: [S]
         if char != '[' \
-            or self.S(self.next()) != 1 \
-            or self.next() != ']':
-                return 0
-        if self.ifnext() == 1: #If something exists after T
-            print i
-            print self.next()
-            return 0
+                or self.S(self.next()) != PASS \
+                or self.next() != ']':
+                    return FAIL
+        
+        # If something exists after T
+        if self.ifnext() == PASS:
+            return FAIL
+        
         else:
-            return 1
-        return 1
+            return PASS
 
+        return PASS
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     S = [ ] | [S] | SS | expr
     def S(self, char):
-        global i
-        start = i
+        start = self.idx
+        
         # Rule: []
         if char != '[' \
             or self.next() != ']':
-            i = start
+                self.idx = start
+
         # Rule: []S
         else:
             char = self.next()
             if char == ']':
-                i -= 1
-                return 1
-            if self.S(char) != 1:
-                i = start
-                return 0
+                self.idx -= 1
+                return PASS
+            
+            if self.S(char) != PASS:
+                self.idx = start
+                return FAIL
+            
             else:
-                return 1
+                return PASS
+
         # Rule: [S]
         if char != '[' \
-            or not self.S(self.next()) \
-            or self.next() != ']':
-            i = start
+                or not self.S(self.next()) \
+                or self.next() != ']':
+                    self.idx = start
+        
         # Rule: [S]S
         else:
             char = self.next()
             if char == ']':
-                i -= 1
-                return 1
-            elif self.S(char) != 1:
-                i = start
-                return 0
+                self.idx -= 1
+                return PASS
+
+            elif self.S(char) != PASS:
+                self.idx = start
+                return FAIL
+
             else:
-                return 1
+                return PASS
+
         # Rule: expr
-        if self.expr(char) != 1:
-            i = start
+        if self.expr(char) != PASS:
+            self.idx = start
+
         else:
             # Rule: expr S
             char = self.next()
             if char == ']':
-                i -= 1
-                return 1
-            elif self.S(char) != 1:
-                i = start
-                return 0
+                self.idx -= 1
+                return PASS
+
+            elif self.S(char) != PASS:
+                self.idx = start
+                return FAIL
+
             else:
-                return 1
-        return 0
+                return PASS
+        
+        return FAIL
 
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     expr = oper | stmts
     def expr(self, char):
-        global i
-        start = i
-        if self.oper(char):
-            return 1
-        if self.stmts(char):
-            return 1
-        i = start
-        return 0
+        start = self.idx
 
+        if self.oper(char) == PASS:
+            return PASS
+        
+        if self.stmts(char) == PASS:
+            return PASS
+        
+        self.idx = start
+
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     oper = [:= name oper] | [binops oper oper] | [unops oper] |
+    #                           constants | name
     def oper(self, char):
-        global i
-        start = i
+        start = self.idx
+        
         # Rule: [:= name oper]
         if char != '['\
-            or self.next() != ':' \
-            or self.next() != '=' \
-            or self.name(self.next()) \
-            or self.oper(self.oper()) \
-            or self.next() != ']':
-            i = start
+                or self.next() != ':' \
+                or self.next() != '=' \
+                or self.name(self.next()) \
+                or self.oper(self.oper()) \
+                or self.next() != ']':
+                    self.idx = start
+        
         else:
-            return 1
+            return PASS
+        
         # Rule: [binops oper oper]
         if char != '[' \
-            or self.binops(self.next()) != 1 \
-            or self.oper(self.next()) != 1 \
-            or self.oper(self.next()) != 1 \
-            or self.next() != ']':
-            i = start
+                or self.binops(self.next()) != PASS \
+                or self.oper(self.next()) != PASS \
+                or self.oper(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
+        
         else:
-            return 1
+            return PASS
+        
         # Rule: [unops oper]
         if char != '[' \
-            or self.unops(self.next()) != 1 \
-            or self.oper(self.next()) != 1 \
-            or self.next() != ']':
-            i = start
-        else: return 1
+                or self.unops(self.next()) != PASS \
+                or self.oper(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
+        
+        else: 
+            return PASS
+        
         # Rule: constants
-        if self.constants(char) != 1:
-            i = start
-        else: return 1
-        # Rule: name
-        if self.name(char) != 1:
-            i = start
-        else: return 1
-        return 0
+        if self.constants(char) != PASS:
+            self.idx = start
 
+        else: 
+            return PASS
+
+        # Rule: name
+        if self.name(char) != PASS:
+            self.idx = start
+
+        else: 
+            return PASS
+        
+        return FAIL
+    
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     binops = + | - | * | / | % | ^ | = | > | >= | < | <= | != | or | and
     def binops(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Check if equal to operators
-        if char != '+' and char != '-' and char != '*' and char != '/' and \
-             char != '%' and char != '^' and char != '=' and char != ':=':
-            i = start
-        else: return 1
+        if char != '+' \
+                and char != '-' \
+                and char != '*' \
+                and char != '/' \
+                and char != '%' \
+                and char != '^' \
+                and char != '=' \
+                and char != ':=':
+                    self.idx = start
+       
+        else: 
+            return PASS
+
         # Check if equal to LT GT comparators
-        if char != '>' and char != '<' and char != '!=' and char != '<=' \
-            and char != '>=':
-            i = start
+        if char != '>' \
+                and char != '<' \
+                and char != '!=' \
+                and char != '<=' \
+                and char != '>=':
+                    self.idx = start
+
         else:
-                return 1
+                return PASS
+
         # Check if or or and
         if char != "or":
-            i = start
-        else: return 1
-        if char != "and":
-            i = start
-        else: return 1
-        return 0
+            self.idx = start
 
+        else: 
+            return PASS
+
+        if char != "and":
+            self.idx = start
+
+        else: 
+            return PASS
+        
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     unops = - | not | sin | cos | tan
     def unops(self, char):
-        global i
-        start = i
-        # Rule: not
-        if char != "not":
-            i = start
-        else: return 1
+        start = self.idx
+		
+		# Rule: -
+        if char != "-":
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: sin
         if char != "sin":
-            i = start
-        else: return 1
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: cos
         if char != "cos":
-            i = start
-        else: return 1
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: tan
         if char != "tan":
-            i = start
-        else: return 1
-        return 0
+            self.idx = start
 
+        else: 
+            return PASS
+        
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE =    constants = strings | ints | floats
     def constants(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: strings
-        if self.strings(char) != 1:
-            i = start
-        else: return 1
+        if self.strings(char) != PASS:
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: ints
-        if self.ints(char) != 1:
-            i = start
-        else: return 1
+        if self.ints(char) != PASS:
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: floats
-        if self.floats(char) != 1:
-            i = start
-        else: return 1
-        return 0
+        if self.floats(char) != PASS:
+            self.idx = start
 
+        else: 
+            return PASS
 
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # TERMINAL:         Reg_ex for string literal in C
     def strings(self, char):
-        global i
-        start = i
-        char = tokens[i][1]
-        # Check for begninning quot mark
-        if char != "STRING": #if scanner did not determine string valid via reg expressions
-            return 0
-        else:
-            return 1
+        start = self.idx
+        char = self.token_list[self.idx][1]
 
+        if char != "STRING":
+            return FAIL
+        
+        else:
+            return PASS
+
+    # -------------------------------------------------------------------------
+    # TERMINAL:         Reg_ex for identifiers in C
     def name(self, char):
-        global i
-        start = i
-        char = tokens[i][1]
-        # Check for begninning quot mark
-        if char != "IDENTIFIER": #if scanner did not determine name valid via reg expressions
-            return 0
+        start = self.idx
+        char = self.token_list[self.idx][1]
+        
+        if char != "IDENTIFIER":
+            return FAIL
+        
         else:
-            return 1
+            return PASS
 
+    # -------------------------------------------------------------------------
+    # TERMINAL:         Reg_ex for positive/negative ints in C
     def ints(self, char):
-        global i
-        start = i
-        char = tokens[i][1]
-        # Check for begninning quot mark
-        if char != "NUMBER": #if scanner did not determine int valid via reg expressions
-            return 0
+        start = self.idx
+        char = self.token_list[self.idx][1]
+        
+        if char != "NUMBER":
+            return FAIL
+        
         else:
-            return 1
+            return PASS
 
+    # -------------------------------------------------------------------------
+    # TERMINAL:         Reg_ex for positive/negative doubles in C
     def floats(self, char):
-        global i
-        start = i
-        char = tokens[i][1]
-        # Check for begninning quot mark
-        if char != "FLOAT": #if scanner did not determine string valid via reg expressions
-            return 0
+        start = self.idx
+        char = self.token_list[self.idx][1]
+        
+        if char != "FLOAT":
+            return FAIL
+        
         else:
-            return 1
+            return PASS
 
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     stmts = ifstmts | whilestmts | letstmts | printstmts
     def stmts(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: ifstmts
-        if self.ifstmts(char) != 1:
-            i = start
-        else: return 1
+        if self.ifstmts(char) != PASS:
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: whilestmts
-        if self.whilestmts(char) != 1:
-            i = start
-        else: return 1
+        if self.whilestmts(char) != PASS:
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: letstmts
-        if self.letstmts(char) != 1:
-            i = start
-        else: return 1
+        if self.letstmts(char) != PASS:
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: printstmts
-        if self.printstmts(char) != 1:
-            i = start
-        else: return 1
-        return 0
+        if self.printstmts(char) != PASS:
+            self.idx = start
+        
+        else: 
+            return PASS
+        
+        return FAIL
 
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     printstmts = [stdout oper]
     def printstmts(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: [stdout oper]
-        if char != '[' or self.next() != "stdout" or self.oper(self.next()) != 1 \
-            or self.next() != ']':
-            i = start
+        if char != '[' \
+                or self.next() != "stdout" \
+                or self.oper(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
+        
         else:
-            return 1
-        return 0
+            return PASS
 
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     ifstmts = [if expr expr expr] | [if expr expr]
     def ifstmts(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: [if expr expr expr]
-        if char != '[' or self.next() != "if" or self.expr(self.next()) != 1 \
-            or self.expr(self.next()) != 1 or self.expr(self.next()) != 1 or self.next() != ']':
-            i = start
-        else: return 1
+        if char != '[' \
+                or self.next() != "if" \
+                or self.expr(self.next()) != PASS \
+                or self.expr(self.next()) != PASS \
+                or self.expr(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: [if expr expr]
-        if char != '[' or self.next() != "if" or self.expr(self.next()) != 1 or self.expr(self.next()) != 1 \
-            or self.next() != ']':
-            i = start
-        else: return 1
-        return 0
+        if char != '[' \
+                or self.next() != "if" \
+                or self.expr(self.next()) != PASS \
+                or self.expr(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
+        
+        else: 
+            return PASS
 
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     whilestmts = [while expr exprlist]
     def whilestmts(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: [while expr exprlist]
-        if char != '[' or self.next() != "while" or self.expr(self.next()) != 1 \
-            or self.exprlist(self.next()) != 1 or self.next() != ']':
-            i = start
-        else: return 1
-        return 0
+        if char != '[' \
+                or self.next() != "while" \
+                or self.expr(self.next()) != PASS \
+                or self.exprlist(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
 
+        else: 
+            return PASS
+        
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     exprlist = expr | expr exprlist
     def exprlist(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: expr exprlist
-        if self.expr(char) != 1 or self.exprlist(self.next()) != 1:
-            i = start
-        else: return 1
+        if self.expr(char) != PASS \
+                or self.exprlist(self.next()) != PASS:
+                    self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: expr
-        if self.expr(char) != 1:
-            i = start
-        else: return 1
-        return 0
+        if self.expr(char) != PASS:
+            self.idx = start
 
+        else: 
+            return PASS
+
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     letstmts = [let [varlist]]
     def letstmts(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: [let [varlist]]
-        if char != '[' or self.next() != "let" or self.next() != '[' \
-            or self.varlist(self.next()) != 1 or self.next() != ']' or self.next() != ']':
-            i = start
-        else: return 1
-        return 0
+        if char != '[' \
+                or self.next() != "let" \
+                or self.next() != '[' \
+                or self.varlist(self.next()) != PASS \
+                or self.next() != ']' \
+                or self.next() != ']': 
+                    self.idx = start
 
+        else: 
+            return PASS
+
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     varlist = [name type] | [name type] varlist
     def varlist(self, char):
-        global i
-        start = i
-        # Rule: [name type] varlist
-        if char != '[' or self.name(self.next()) != 1 or self.type(self.next()) != 1 \
-            or self.next() != ']' or self.varlist(self.next()) != 1:
-            i = start
-        else: return 1
-        # Rule: [name type]
-        if char != '[' or self.name(self.next()) != 1 or self.type(self.next()) != 1 \
-            or self.next() != ']':
-            i = start
-        else: return 1
-        return 0
+        start = self.idx
 
+        # Rule: [name type] varlist
+        if char != '[' \
+                or self.name(self.next()) != PASS \
+                or self.type(self.next()) != PASS \
+                or self.next() != ']' \
+                or self.varlist(self.next()) != PASS:
+                    self.idx = start
+
+        else: 
+            return PASS
+        
+        # Rule: [name type]
+        if char != '[' \
+                or self.name(self.next()) != PASS \
+                or self.type(self.next()) != PASS \
+                or self.next() != ']':
+                    self.idx = start
+
+        else: 
+            return PASS
+        
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # GRAMMAR RULE:     type = bool | int | float
     def type(self, char):
-        global i
-        start = i
+        start = self.idx
+
         # Rule: bool
         if char != "bool":
-            i = start
-        else: return 1
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: int
         if char != "int":
-            i = start
-        else: return 1
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: float
         if char != "float":
-            i = start
-        else: return 1
+            self.idx = start
+
+        else: 
+            return PASS
+
         # Rule: string
         if char != "string":
-            i = start
-        else: return 1
-        return 0
+            self.idx = start
 
+        else: 
+            return PASS
+        
+        return FAIL
+
+    # -------------------------------------------------------------------------
+    # HELPER FUNCTIONS
     def ifnext(self):
-        global tokens
-        global i
-        if (i + 1) >= len(tokens):
-            return 0
-        return 1
+        if (self.idx + 1) >= len(self.token_list):
+            return FAIL
+        
+        return PASS
 
     def next(self):
-        global tokens
-        global i
-        if self.ifnext():
-            i += 1
-            return tokens[i][0]
+        if self.ifnext() == PASS:
+            self.idx += 1
+            return self.token_list[self.idx][0]
+
         # Expected character does not exist
         return ''
 
-
 if __name__ == '__main__':
-    print("This is the parser.py file")
+    print("This is the token_parser.py file")
     print("This is a helper file to the main.py of Milestone #3 for CS 480")

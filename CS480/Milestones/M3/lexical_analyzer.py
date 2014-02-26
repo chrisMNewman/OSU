@@ -1,8 +1,8 @@
 # -----------------------------------------------
 # file          : lexical_analyzer.py
 # author        : Sang Shin | Chris Newman
-# date          : 01-30-2014
-# class         : CS 480 | Milestone #2
+# date          : 02-13-2014
+# class         : CS 480 | Milestone #3
 # description   : Contains the Lexer class that 
 #                 performs all regex-based lexer
 #                 or tokenization

@@ -1,0 +1,119 @@
+PTEST 1         : BLANK
+PTEST RESULT    : FAIL
+
+PTEST 2         : [
+PTEST RESULT    : FAIL
+
+PTEST 3         : []
+PTEST RESULT    : FAIL
+
+PTEST 4         : [[]]
+PTEST RESULT    : PASS
+
+PTEST 5         : [[[]]
+PTEST RESULT    : FAIL
+
+PTEST 6         : [[-34.4e8 +]]
+PTEST RESULT    : FAIL
+
+PTEST 7         : [[+ 1 2]]
+PTEST RESULT    : PASS
+
+PTEST 8         : [[+ 3 [* [- 4 3] [/ [% 2 2] 3]]]]
+PTEST RESULT    : PASS
+
+PTEST 9         : [["HeLlO wOrLd!"]]
+PTEST RESULT    : PASS
+
+PTEST 10        : [[:= BAKE [:= CAKE 40]]]
+PTEST RESULT    : PASS
+
+PTEST 11        : [[:= bake [:= cake 40.5]]]
+PTEST RESULT    : PASS
+
+PTEST 12        : [[:= BAKE [:= cake MAKE]]]
+PTEST RESULT    : PASS
+
+PTEST 13        : [[:= bake [:= CAKE "hello WORLD"]]]
+PTEST RESULT    : PASS
+
+PTEST 14        : [[= BAKE 1]]
+PTEST RESULT    : PASS
+
+PTEST 15        : [[- BAKE]]
+PTEST RESULT    : FAIL
+
+PTEST 16        : [[not bake]]
+PTEST RESULT    : PASS
+
+PTEST 17        : [[sin bake]]
+PTEST RESULT    : PASS
+
+PTEST 18        : [[cos bake]]
+PTEST RESULT    : PASS
+
+PTEST 19        : [[tan bake]]
+PTEST RESULT    : PASS
+
+PTEST 20        : [[tan "Hello World"]]
+PTEST RESULT    : PASS
+
+PTEST 21        : [[= nugget 5]]
+PTEST RESULT    : PASS
+
+PTEST 22        : [[= cake 1]]
+PTEST RESULT    : PASS
+
+PTEST 23        : [[+ cake nugget]]
+PTEST RESULT    : PASS
+
+PTEST 24        : [[- nugget cake]]
+PTEST RESULT    : PASS
+
+PTEST 25        : [[let [[cake 20]]]]
+PTEST RESULT    : FAIL
+
+PTEST 26        : [[let [[cake 253.43e2]]]]
+PTEST RESULT    : FAIL
+
+PTEST 27        : [[let [[cake string]]]]
+PTEST RESULT    : PASS
+
+PTEST 28        : [[let [[cake INT]]]]
+PTEST RESULT    : FAIL
+
+PTEST 29        : [[let [[cake float]]]]
+PTEST RESULT    : PASS
+
+PTEST 30        : [[and cheese fake]]
+PTEST RESULT    : PASS
+
+PTEST 31        : [[or cheese fake]]
+PTEST RESULT    : PASS
+
+PTEST 32        : [[stdout "Strings"]]
+PTEST RESULT    : PASS
+
+PTEST 33        : [[stdout cake]]
+PTEST RESULT    : PASS
+
+PTEST 34        : [[stdout 43]]
+PTEST RESULT    : PASS
+
+PTEST 35        : [[stdout 43.32e-9]]
+PTEST RESULT    : PASS
+
+PTEST 36        : [[if [< king pawn] [+ pawn 1]]]
+PTEST RESULT    : PASS
+
+PTEST 37        : [[if [and king pawn [= pawn 0] [= 32 king]]]]
+PTEST RESULT    : FAIL
+
+PTEST 38        : [[while [< king pawn] [+ king 1000000]]]
+PTEST RESULT    : PASS 
+
+PTEST 39        : [[:= hake [+ [:= kake [- [not cake] [* make take]] [cos rake]]]]]
+PTEST RESULT    : FAIL
+
+PTEST 40        : [[:= hake [+ [:= kake [- [not cake] [* make take]] [cos tan]]]]]
+PTEST RESULT    : FAIL

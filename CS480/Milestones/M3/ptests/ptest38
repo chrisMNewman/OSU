@@ -1,0 +1,1 @@
+[[while [< king pawn] [+ king 1000000]]]
