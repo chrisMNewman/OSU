@@ -1,0 +1,811 @@
+=============== test.txt ===============
+[ + 2 3 ] 
+2 3 + . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+ " "Cake"" . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+  Cake . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+  Cake . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+  Cake . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s   type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s   type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s   type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s C type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s C type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s C type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s C type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s s type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s s type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+ s  s  stdout  s . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+ s  s  stdout  s . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+ s  s  stdout  s . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+ s  s  stdout  s . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type . cr 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type 
+
+=============== test.txt ===============
+[ [ stdout Cake ] ] 
+s" Cake" type 
+
+=============== test.txt ===============
+[ [ + 2 3 ] ] 
+2 3 + . cr 
+
+=============== test.txt ===============
+[ [ + 2 3 ] ] 
+2 3 + . cr 
+
+=============== test.txt ===============
+[ [ + 3 [ * [ - 4 3 ] [ / [ % 2 2 ] 3 ] ] ] ] 
+3 4 3 - 2 2 mod 3 / * + . cr 
+
+=============== test.txt ===============
+[ [ + 3 [ * [ - 4 3 ] [ / [ % 2 2 ] 3 ] ] ] ] 
+3 4 3 - 2 2 mod 3 / * + . cr 
+
+=============== test.txt ===============
+[ [ and 2 3 ] ] 
+2 3 and . cr 
+
+=============== test.txt ===============
+[ [ and 2 3 ] ] 
+2 3 and . cr 
+
+=============== test.txt ===============
+[ [ stdout Hi! ] ] 
+s" Hi!" type . cr 
+
+=============== test.txt ===============
+[ [ stdout Hi! ] ] 
+s" Hi!" type . cr 
+
+=============== test.txt ===============
+[ [ stdout Hi! ] ] 
+s" Hi!" type . cr 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + . cr 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + . cr 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + . cr 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + . cr 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + . cr 
+
+=============== test.txt ===============
+[ [ + 3 5 ] [ + 6 5 ] ] 
+3 5 + 6 5 + . cr 
+
+=============== test.txt ===============
+[ [ stdout Hi ] ] 
+s" Hi" type 
+
+=============== test.txt ===============
+[ [ stdout Hi ] ] 
+s" Hi" type 
+
+=============== test.txt ===============
+[ [ stdout Hi ] ] 
+s" Hi" type 
+
+=============== test.txt ===============
+[ [ stdout Hi ] [ + 3 4 ] ] 
+s" Hi" type 3 4 + . cr 
+
+=============== test.txt ===============
+[ [ stdout Hi ] [ + 3 4 ] ] 
+s" Hi" type 3 4 + . cr 
+
+=============== test.txt ===============
+[ [ stdout Hi ] [ + 3 4 ] [ stdout Ji ] [ - 5 ] [ stdout nih! ] ] 
+s" Hi" type 3 4 + s" Ji" type 5 s" nih!" type 
+
+=============== test.txt ===============
+[ [ stdout Hi ] [ + 3 4 ] [ stdout Ji ] [ - 5 ] [ stdout nih! ] ] 
+s" Hi" type 3 4 + s" Ji" type 5 s" nih!" type 
+
+=============== test.txt ===============
+[ [ - 5 ] ] 
+5 negate . cr 
+
+=============== test.txt ===============
+[ [ - 5 ] ] 
+5 negate . cr 
+
+=============== test.txt ===============
+[ [ - 5 ] [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+[ [ - 5 ] [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+[ - 5 [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+[ - 5 [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+[ - 5 [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+[ - 5 [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+[ - 5 [ - 5 ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ - 5 [ - 5 ] ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 [ - 5 ] ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 [ - 5 ] ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 [ - 5 ] ] ] 
+5 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout hi ] [ + 4 5 ] ] 
+s" hi" type 4 5 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout hi ] [ + 4 5 ] ] 
+s" hi" type 4 5 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout hi ] [ + 4 5 ] ] 
+s" hi" type 4 5 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 ] ] 
+5 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 4 ] ] 
+5 4 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 [ - 5 ] ] ] 
+4 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 [ - 5 ] ] ] 
+4 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 [ - 5 ] ] ] 
+4 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 5 ] ] 
+4 5 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 5 ] [ - 4 5 ] ] 
+4 5 - 4 5 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 5 ] [ - 5 ] ] 
+4 5 - 5 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 5 ] [ - 5 ] ] 
+4 5 - 5 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 3 [ * [ - 4 3 ] [ / [ % 2 2 ] 3 ] ] ] ] 
+3 4 3 - 2 2 mod 3 / * + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 3 [ * [ - 4 3 ] [ / [ % 2 2 ] 3 ] ] ] ] 
+3 4 3 - 2 2 mod 3 / * + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - [ + 2 [ - 5 [ - 4 3 ] ] ] ] ] 
+2 5 4 3 - - + - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - [ + 2 [ - 5 [ - 4 3 ] ] ] ] ] 
+2 5 4 3 - - + - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - [ + 2 [ - 5 [ - 4 3 ] ] ] ] ] 
+2 5 4 3 - - + negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 ] [ - 4 ] ] 
+5 4 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 ] [ - 4 ] ] 
+5 4 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 ] [ - 4 ] ] 
+5 4 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 5 ] [ - 4 ] ] 
+5 4 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 5 4 ] ] 
+5 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 5 4 ] [ + 5 4 ] [ - 1 ] ] 
+5 4 + 5 4 + 1 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 5 4 ] [ + 5 4 ] [ - 1 ] ] 
+5 4 + 5 4 + 1 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 4 ] [ - 5 ] ] 
+4 5 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 4 5 ] ] 
+4 5 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout Bacon! ] [ stdout No! ] ] 
+s" Bacon!" type s" No!" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + if . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+< 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 THEN ; 4 5 < 3 4 - 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+< 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 .s THEN ; 4 5 < 3 4 - 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+< 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 .s THEN ; 4 5 < 3 4 - 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+if 4 5 < 3 4 - 3 4 + < 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+if 4 5 < 3 4 - 3 4 + < 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + < 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + < 4 5 : ifftrue IF - 3 4 .s ELSE + 3 4 .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + : ifftrue IF - .s ELSE + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 4 - 3 4 + : ifftrue IF - .s ELSE + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 : ifftrue IF 4 - ELSE .s 3 .s THEN ; 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < 3 : ifftrue IF 4 - ELSE .s 3 .s THEN ; 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 4 ] [ + 3 4 ] ] ] 
+4 5 < : ifftrue IF 3 4 - ELSE .s 3 .s THEN ; 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 4 5 ] [ - 3 ] [ + 3 4 ] ] ] 
+4 5 < : ifftrue IF 3 3 ELSE .s 4 .s THEN ; + - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ < 4 5 ] [ - 3 ] [ + 3 4 ] ] 
+4 5 < 3 3 4 + - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ + 3 4 ] [ 3 ] [ + 4 3 ] ] 
+3 4 + 3 4 3 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ + 4 5 ] [ - 3 4 ] ] ] 
+5 4 < : ifftrue IF 4 5 + ELSE .s 3 .s THEN ; 4 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ + 4 5 ] [ - 3 4 ] ] ] 
+5 4 < : ifftrue IF 4 5 + .s ELSE 3 .s THEN ; 4 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ + 4 5 ] [ - 3 4 ] ] ] 
+5 4 < : ifftrue IF 4 5 + .s ELSE 3 .s THEN ; 4 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ + 4 5 ] [ - 3 4 ] ] ] 
+5 4 < : ifftrue IF 4 5 + .s ELSE 3 4 - .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ % 4 5 ] [ - 3 4 ] ] ] 
+5 4 <> : ifftrue IF 4 5 mod .s ELSE 3 4 - .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ % 4 5 ] ] ] 
+5 4 <> : ifftrue IF 4 5 mod .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ % 4 5 ] ] ] 
+5 4 <> : ifftrue IF 4 5 mod .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ not 5 ] ] ] 
+5 4 <> : ifftrue IF 5 .s ELSE not .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ + 4 5 ] ] ] 
+5 4 <> : ifftrue IF 4 5 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ not 5 ] ] ] 
+5 4 <> : ifftrue IF 5 .s ELSE not .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ != 5 4 ] [ not 5 ] ] ] 
+5 4 <> : ifftrue IF 5 .s ELSE not .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ not 5 ] ] ] 
+4 : ifftrue IF 5 .s ELSE not .s THEN ; not . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ + 4 4 ] [ - 3 5 ] ] ] 
+4 4 + : ifftrue IF 3 5 - .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ 1 ] [ - 3 5 ] ] ] 
+1 : ifftrue IF 3 5 - .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ 1 ] [ - 3 5 ] ] ] 
+1 : ifftrue IF 3 5 - .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ 6 ] [ - 3 4 ] [ - 3 2 ] ] 
+6 : ifftrue IF 3 4 - .s ELSE 3 2 - .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ - [ + [ 2.0 [ - 5.0 [ - 4.0 3.0 ] ] ] ] ] ] 
+2.0e 5.0e 4.0e 3.0e F- F- F+ Fnegate F. cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+

@@ -1,0 +1,24 @@
+# -----------------------
+# file  :   README
+# name  :   Sang Shin | Chris Newman
+# class :   CS 480
+# assig :   Milestone 4
+#
+#
+# description
+# ----------------------
+#
+# files
+# ----------------------
+# README
+# sangshin_milestone4_report.pdf
+# ittybittygrammar
+# lexical_analyzer.py
+# main.py
+# Makefile
+# token_parser.py
+#
+# execution
+# ----------------------
+# make
+# make clean

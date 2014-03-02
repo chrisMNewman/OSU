@@ -1,0 +1,211 @@
+# -----------------------------------------------
+# INTEGERS TESTS
+PTESTN1         : [[+ 1 2]]
+POSTFIX         : 1 2 + .
+ANSWER          : 3
+
+PTESTN2         : [[- 2 1]]
+POSTFIX         : 2 1 - .
+ANSWER          : 1
+
+PTESTN3         : [[/ 2 2]]
+POSTFIX         : 2 2 / .
+ANSWER          : 1
+
+PTESTN4         : [[= 2 2]]
+POSTFIX         : 2 2 = .
+ANSWER          : -1
+
+PTESTN5         : [[= 2 3]]
+POSTFIX         : 2 3 = .
+ANSWER          : 0
+
+PTESTN6         : [[> 2 3]]
+POSTFIX         : 2 3 > .
+ANSWER          : 0
+
+PTESTN7         : [[> 3 2]]
+POSTFIX         : 3 2 > .
+ANSWER          : -1
+
+PTESTN8         : [[>= 2 3]]
+POSTFIX         : 2 3 >= .
+ANSWER          : 0
+
+PTESTN9         : [[>= 3 2]]
+POSTFIX         : 3 2 >= .
+ANSWER          : -1
+
+PTESTN10        : [[>= 3 3]]
+POSTFIX         : 3 3 >= .
+ANSWER          : -1
+
+PTESTN11        : [[+ 1[* [+ 2 3] 7]]]
+POSTFIX         : 1 2 3 + 7 * + .
+ANSWER          : 36
+
+PTESTN12        : [[+ 3 [* [- 4 3] [/ [% 2 2] 3]]]]
+POSTFIX         : 3 4 3 - 2 2 mod 3 / * + .
+ANSWER          : 3
+
+PTESTN13        : [[and 2 2]]
+POSTFIX         : 2 2 and .
+ANSWER          : 2
+
+PTESTN14        : [[and 2 3]]
+POSTFIX         : 2 3 and .
+ANSWER          : 2
+
+PTESTN15        : [[or 2 2]]
+POSTFIX         : 2 2 or .
+ANSWER          : 2 
+
+PTESTN16        : [[or 2 3]]
+POSTFIX         : 2 3 or .
+ANSWER          : 3
+
+PTESTN17        : [[-1]]
+POSTFIX         : 1 negate .
+ANSWER          : -1
+
+PTESTN18        : [[-2]]
+POSTFIX         : 2 negate .
+ANSWER          : -2
+
+PTESTN19        : [[- [+ 1 2]]]
+POSTFIX         : 1 2 + negate .
+ANSWER          : -3
+
+PTESTN20        : [[- [+ 2 [- 5]]]]
+POSTFIX         : 2 5 negate + negate .
+ANSWER          : 3
+
+PTESTN21        : [[- [+ 2 [- 5 [- 4 3]]]]]
+POSTFIX         : 2 5 4 3 - - + negate .
+ANSWER          : -6
+
+PTESTN22        : [[!= 1 1]]
+POSTFIX         : 1 1 <> .
+ANSWER          : 0
+
+PTESTN23        : [[!= 1 2]]
+POSTFIX         : 1 2 <> .
+ANSWER          : -1
+
+PTESTN24        : [[^ 2 2]]
+POSTFIX         : 2 dup * .
+ANSWER          : 4
+
+PTESTN25        : [[^ 16 3]]
+POSTFIX         : 16 dup dup * * .
+ANSWER          : 4096
+
+PTESTN26        : [[+ 2 [^ 2 4]]]
+POSTFIX         : 2 2 dup dup dup * * * + .
+ANSWER          : 18
+
+PTESTN27        : [[+ 2 [- 3 [/ 4 [^ 16 3]]]]]
+POSTFIX         : 2 3 4 16 dup dup * * / - + .
+ANSWER          : 5
+
+# -----------------------------------------------
+# FLOATING POINT TESTS
+PTESTF1         : [[+ 1.0 2.0]]        
+POSTFIX         : 1.0e 2.0e F+ F.
+ANSWER          : 3.
+
+PTESTF2         : [[- 2.0 1.0]]
+POSTFIX         : 2.0e 1.0e F- F.
+ANSWER          : 1.
+
+PTESTF3         : [[/ 2.0 2.0]]
+POSTFIX         : 2.0e 2.0e F/ F.
+ANSWER          : 1.
+
+PTESTF4         : [[= 2.0 2.0]]
+POSTFIX         : 2.0e 2.0e F= .
+ANSWER          : -1
+
+PTESTF5         : [[= 2.0 3.0]]         
+POSTFIX         : 2.0e 3.0e F= .
+ANSWER          : 0
+
+PTESTF6         : [[> 2.0 3.0]]         
+POSTFIX         : 2.0e 2.0e F> .
+ANSWER          : 0
+
+PTESTF7         : [[> 3.0 2.0]]
+POSTFIX         : 3.0e 2.0e F> .
+ANSWER          : -1
+
+PTESTF8         : [[>= 2.0 3.0]]
+POSTFIX         : 2.0e 3.0e F>= .
+ANSWER          : 0
+
+PTESTF9         : [[>= 3.0 2.0]]
+POSTFIX         : 3.0e 2.0e F>= .
+ANSWER          : -1
+
+PTESTF10        : [[>= 3.0 3.0]]
+POSTFIX         : 3.0e 3.0e F>= .
+ANSWER          : -1
+
+PTESTF11        : [[+ 1.0[* [+ 2.0 3.0] 7.0]]]
+POSTFIX         : 1.0e 2.0e 3.0e F+ 7.0e F* F+ F.
+ANSWER          : 36
+
+PTESTF12        : [[+ 3.0 [* [- 4.0 3.0] [/ [% 2 2] 3.0]]]]
+POSTFIX         : 3.0e 4.0e 3.0e F- 2 2 mod S>D D>F 3.0e F/ F* F+ F.
+ANSWER          : 3     
+
+PTESTF13        : [[sin 1.0]]
+POSTFIX         : 1.0e Fsin F.
+ANSWER          : 0.841470984807897
+
+PTESTF14        : [[cos 1.0]]
+POSTFIX         : 1.0e Fcos F.
+ANSWER          : 0.54030230586814
+
+PTESTF15        : [[tan 1.0]]
+POSTFIX         : 1.0e Ftan F.
+ANSWER          : 1.5574077246549
+
+PTESTF16        : [[- 1.0]]
+POSTFIX         : 1.0e Fnegate F.
+ANSWER          : -1.
+
+PTESTF17        : [[- 2.0]]
+POSTFIX         : 2.0e Fnegate F.
+ANSWER          : -2.
+
+PTESTF18        : [[- [+ 2.0 [- 5.0]]]]
+POSTFIX         : 2.0e 5.0e Fnegate F+ Fnegate F.
+ANSWER          : 3.
+
+PTESTF19        : [[- [+ [2.0 [- 5.0 [- 4.0 3.0]]]]]]
+POSTFIX         : 2.0e 5.0e 4.0e 3.0e F- F- F+ Fnegate F.
+ANSWER          : -6.
+
+PTESTF20        : [[!= 1.0 1.0]]
+POSTFIX         : 1.0e 1.0e F<> .
+ANSWER          : 0
+
+PTESTF21        : [[!= 1.0 2.0]]
+POSTFIX         : 1.0e 2.0e F<> .
+ANSWER          : -1
+
+PTESTF22        : [[^ 2.0 2.0]]
+POSTFIX         : 2.0e Fdup F* F.
+ANSWER          : 4.
+
+PTESTF23        : [[^ 16.0 3.0]]
+POSTFIX         : 16.0e Fdup Fdup F* F* F.
+ANSWER          : 4096.
+
+PTESTF24        : [[+ 2.0 [ ^ 2.0 4.0]]]
+POSTFIX         : 2.0e 2.0e Fdup Fdup Fdup F* F* F* F+ F.
+ANSWER          : 18.
+
+PTESTF25        : [[+ 2.0 [- 3.0 [/ 4.0 [^ 16.0 3.0]]]]]]
+POSTFIX         : 2.0e 3.0e 4.0e 16.0e Fdup Fdup F* F* F/ F- F+ F.
+ANSWER          : 4.9990234375
