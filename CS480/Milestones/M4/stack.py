@@ -18,7 +18,10 @@ class Stack(object):
         self.items.append(item)
 
     def pop(self):
-        return self.items.pop()
+        if len(self.items) >= 1: # Check if stack is empty
+            return self.items.pop()
+        else:
+            return ""
 
     def peek(self):
         return self.items[len(self.items)-1]

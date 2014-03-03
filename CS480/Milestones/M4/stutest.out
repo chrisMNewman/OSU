@@ -809,3 +809,479 @@ PTEST RESULT:	FAIL
 =============== test.txt ===============
 PTEST RESULT:	FAIL
 
+=============== test.txt ===============
+[ [ - [ + [ 2.0 [ - 5.0 [ - 4.0 3.0 ] ] ] ] ] ] 
+2.0e 5.0e 4.0e 3.0e F- F- F+ Fnegate F. cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ - 1 ] ] 
+1 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 1 ] [ - 1 ] 
+1 1 negate negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ not 1 ] [ not 1 ] 
+1 1 not not . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ not 1 ] [ not 1 ] ] 
+1 1 not not . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ and 1 ] [ or 1 ] ] 
+1 1 or and . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ and [ or 1 ] ] ] 
+1 or and . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ and [ or 1 ] ] ] 
+1 or and . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ - 9 3 ] [ + 4 6 ] ] 
+9 3 - 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 9 3 ] [ + 4 6 ] ] 
+9 3 - 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 9 3 ] [ + 4 6 ] ] 
+9 3 - 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 9 3 ] [ + 4 6 ] ] 
+9 3 - 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ + 4 6 ] ] 
+3 4 6 + - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ + 4 6 ] ] 
+3 operator_pop 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ + 4 6 ] ] 
+3 operator_pop 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ + 4 6 ] ] 
+3 negate 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ + 4 6 ] ] 
+3 negate 4 6 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ - 3 ] ] 
+3 negate 3 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ - 3 ] ] 
+3 negate 3 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] ] 
+3 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 6 ] ] 
+3 negate 6  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 6 ] ] 
+3 negate 6  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 6 ] ] 
+3 negate 6  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 6 ] ] 
+3 negate 6  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 6 ] ] 
+3 6 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 6 ] ] 
+3 6 - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] ] 
+3 negate . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 ] [ - 3 ] [ stdout egads! ] 
+3 negate 3 negate s" egads!" type 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ - 3 ] [ - 3 ] [ stdout egads! ] ] 
+3 negate 3 negate s" egads!" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ - 3 [ - 3 ] ] ] 
+3 3 negate - . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ or 5 ] [ not 45 ] ] 
+5 or 45 not . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ or 5 ] [ not 45 ] ] 
+5 or 45 not . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ + 3 4 ] ] ] 
+5 4 < : ifftrue IF 3 4 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ + 3 4 ] ] ] 
+5 4 < : ifftrue IF 3 4 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ - 3 ] ] ] 
+5 4 < : ifftrue IF 3 negate .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 5 4 ] [ - 3 ] ] ] 
+5 4 < : ifftrue IF 3 negate .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ - 4 ] [ - 3 ] ] ] 
+4 negate : ifftrue IF 3 negate .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ 1 ] [ - 3 ] ] ] 
+1 : ifftrue IF 3 negate .s THEN ;  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ 1 ] [ 1 ] ] ] 
+1 : ifftrue IF 1 .s THEN ;  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ 1 ] [ 1 ] [ + 3 4 ] ] 
+1 : ifftrue IF 1 .s ELSE  3 4 .s THEN ; + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ 1 ] [ 1 ] [ + 3 4 ] ] 
+1 : ifftrue IF 1 .s ELSE  3 4 .s THEN ; + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 4 5 ] [ + 3 4 ] ] 
+4 : ifftrue IF not .s ELSE 4 5 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ < 3 4 ] [ + 4 5 ] [ + 3 4 ] ] 
+3 4 < : ifftrue IF 4 5 + .s ELSE 3 4 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ < 3 4 ] [ 5 ] [ + 3 4 ] ]]
+3 4 < : ifftrue IF 5 negate .s ELSE 3 4 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ < 3 4 ] [ 5 ] [ + 3 4 ] ] ] 
+3 4 < : ifftrue IF 5 .s ELSE 3 4 + .s THEN ;  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ < 3 4 ] [ + 3 2 ] [ not 4 ] ] ] 
+3 4 < : ifftrue IF 3 2 + .s ELSE 4 .s THEN ; not . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ < 3 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+3 4 < : ifftrue IF 3 2 + .s ELSE 3 4 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 .s THEN ; 2 + 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 .s THEN ; 2 + 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 .s THEN ; 2 + 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 .s THEN ; 2 + 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 : ifftrue IF not .s ELSE 3 2 + .s THEN ; 3 4 + . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ not 4 ] [ + 3 2 ] [ + 3 4 ] ] ] 
+4 not : ifftrue IF 3 2 + .s ELSE 3 4 + .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ 4 ] [ and 2 ] [ - 4 ] ] ] 
+4 : ifftrue IF 2 and .s ELSE 4 negate .s THEN ;  . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	FAIL
+
+=============== test.txt ===============
+[ [ if [ + 2 4 ] [ % 45 3 ] [ not 3 ] ] ] 
+2 4 + : ifftrue IF 45 3 mod .s ELSE 3 not .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ if [ + 2 4 ] [ % 45 3 ] [ not 3 ] ] ] 
+2 4 + : ifftrue IF 45 3 mod .s ELSE 3 not .s THEN ; . cr 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout Hello! ] ] 
+s" Hello!" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout Hello! ] ] 
+s" Hello!" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout Hi there! ] [ + 5 4 ] [ stdout I'm hungry ] ] 
+s" Hi there!" type 5 4 + s" I'm hungry" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout Hi there! ] [ + 5 4 ] [ stdout I'm hungry ] ] 
+s" Hi there!" type 5 4 + s" I'm hungry" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+
+=============== test.txt ===============
+[ [ stdout Hi there! ] [ + 5 4 ] [ stdout I'm hungry ] ] 
+s" Hi there!" type 5 4 + s" I'm hungry" type 
+
+=============== test.txt ===============
+PTEST RESULT:	PASS
+

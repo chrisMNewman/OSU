@@ -1,0 +1,1 @@
+[[stdout "Hi there!"][+ 5 4][stdout "I'm hungry"]]

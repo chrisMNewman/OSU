@@ -108,6 +108,22 @@ PTESTN27        : [[+ 2 [- 3 [/ 4 [^ 16 3]]]]]
 POSTFIX         : 2 3 4 16 dup dup * * / - + .
 ANSWER          : 5
 
+PTESTN28        : [[if [4] [and 2] [- 4]]]
+POSTFIX         : 4 : ifftrue IF 2 and .s ELSE 4 negate .s THEN ;  . cr
+ANSWER          -4
+
+PTEST29         : [[if [+ 2 4] [% 45 3] [- 3]]]
+POSTFIX         : 2 4 + : ifftrue IF 45 3 mod .s ELSE 3 negate .s THEN ; . cr
+ANSWER          -3
+
+PTEST30         : [[stdout "Hello!"]]
+POSTFIX         : s" Hello!" type
+ANSWER          : Hello!
+
+PTEST31         : [[stdout "Hi there!"][+ 5 4][stdout "I'm hungry"]]
+POSTFIX         : s" Hi there!" type 5 4 + s" I'm hungry" type
+ANSWER          : Hi there! 9 I'm hungry
+
 # -----------------------------------------------
 # FLOATING POINT TESTS
 PTESTF1         : [[+ 1.0 2.0]]        

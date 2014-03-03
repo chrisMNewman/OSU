@@ -86,8 +86,12 @@ class Constant_Only(object):
                 if char == '-' and counter_operand == 1:
                     raw_data_list[end_idx][0] = 'negate'
                 elif char == '-' and counter_operand == 2:
-                    if prev_scope == scope and raw_data_list[end_idx + 2][0] == 'negate': #If negation operand belongs to current scope
-                        raw_data_list[end_idx][0] = 'negate'
+                    if prev_scope == scope: #If negation operand belongs to current scope
+                        if end_idx + 2 < len(raw_data_list):
+                            if raw_data_list[end_idx + 2][1] != 'NUMBER' and raw_data_list[end_idx + 2][1] != 'IDENTIFIER':
+                                raw_data_list[end_idx][0] = 'negate'
+                        else:
+                            raw_data_list[end_idx][0] = 'negate'
                     counter_operand -=  1
                 else:
                     counter_operand -=  1
@@ -169,6 +173,17 @@ class Constant_Only(object):
             elif char != "if" and is_floating_point == False:
                 postfix_list.append(char)
                 is_double_literal += 1
+
+                if is_double_literal == 1:
+                    operator_pop = st.pop()
+
+                    if operator_pop == 'negate' or operator_pop == 'or' or operator_pop == 'and' \
+                        or operator_pop == 'not':
+                        postfix_list.append(operator_pop)
+                        is_double_literal = 0
+
+                    else:
+                        st.push(operator_pop) #Place operator back in the stack
                 
                 if is_double_literal == 2:
                     operator_pop = st.pop()
@@ -205,6 +220,17 @@ class Constant_Only(object):
                 else:
                     postfix_list.append(char)
                     is_double_literal += 1
+
+                if is_double_literal == 1:
+                    operator_pop = st.pop()
+
+                    if operator_pop == 'negate' or operator_pop == 'or' or operator_pop == 'and' \
+                        or operator_pop == 'not':
+                        postfix_list.append('operator_pop')
+                        is_double_literal = 0
+
+                    else:
+                        st.push(operator_pop) #Place operator back in the stack
 
                 if is_double_literal == 2:
                     operator_pop = st.pop()
@@ -248,7 +274,11 @@ class Constant_Only(object):
                         j += 1
                         k += 1
                 else:
-                    k += 1
+                    if raw_data_list[cur_idx + k][0] == 'negate' or raw_data_list[cur_idx + k][0] == 'not' \
+                        or raw_data_list[cur_idx + k][0] == 'or' or raw_data_list[cur_idx + k][0] == 'and':
+                        k += 2
+                    else:
+                        k += 1
                 postfix_list.insert(cur_idx + k - 1, ": ifftrue IF")
                 j = 0 # Operator counter
                 if cur_idx + k < len(raw_data_list) and raw_data_list[cur_idx + k][1] == 'OPERATOR':
@@ -257,21 +287,29 @@ class Constant_Only(object):
                         j += 1
                         k += 1
                 else:
-                    k += 1
+                    if raw_data_list[cur_idx + k][0] == 'negate' or raw_data_list[cur_idx + k][0] == 'not' \
+                        or raw_data_list[cur_idx + k][0] == 'or' or raw_data_list[cur_idx + k][0] == 'and':
+                        k += 2
+                    else:
+                        k += 1
                 postfix_list.insert(cur_idx + k, ".s")
                 if cur_idx + k >= len(raw_data_list) or \
-                    raw_data_list[cur_idx + k][3] > raw_data_list[cur_idx + k - 1][3]: # Check if else statement exists within current context
+                    raw_data_list[cur_idx + k][3] > raw_data_list[cur_idx + k][3]: # Check if else statement exists within current context
                     postfix_list.insert(cur_idx + k + 1 ,"THEN ;")
                 else:
                     postfix_list.insert(cur_idx + k + 1, "ELSE")
                     j = 0 # Operator counter
                     if cur_idx + k < len(raw_data_list) and raw_data_list[cur_idx + k][1] == 'OPERATOR':
-                        k += 1 # skip first operator
+                        k += 1 # skip first operator[
                         while cur_idx + k < len(raw_data_list) and raw_data_list[cur_idx + k][1] != 'OPERATOR' and j < 2:
                             j += 1
                             k += 1
                     else:
-                        k += 1
+                        if raw_data_list[cur_idx + k][0] == 'negate' or raw_data_list[cur_idx + k][0] == 'not' \
+                            or raw_data_list[cur_idx + k][0] == 'or' or raw_data_list[cur_idx + k][0] == 'and':
+                            k += 2
+                        else:
+                            k += 1
                     postfix_list.insert(cur_idx + k + 2, ".s THEN ;")
 
             if end_with_string == True:

@@ -38,6 +38,10 @@ stutest: $(SOURCE)
 	$(CCC) $(SOURCE) ptests/ptestN25
 	$(CCC) $(SOURCE) ptests/ptestN26
 	$(CCC) $(SOURCE) ptests/ptestN27
+	$(CCC) $(SOURCE) ptests/ptestN28
+	$(CCC) $(SOURCE) ptests/ptestN29
+	$(CCC) $(SOURCE) ptests/ptestN30
+	$(CCC) $(SOURCE) ptests/ptestN31
 	$(CCC) $(SOURCE) ptests/ptestF1
 	$(CCC) $(SOURCE) ptests/ptestF2
 	$(CCC) $(SOURCE) ptests/ptestF3
@@ -90,6 +94,10 @@ stutest: $(SOURCE)
 	gforth ptests/ptestN25.fs -e bye
 	gforth ptests/ptestN26.fs -e bye
 	gforth ptests/ptestN27.fs -e bye
+	gforth ptests/ptestN28.fs -e bye
+	gforth ptests/ptestN29.fs -e bye
+	gforth ptests/ptestN30.fs -e bye
+	gforth ptests/ptestN31.fs -e bye
 	gforth ptests/ptestF1.fs -e bye
 	gforth ptests/ptestF2.fs -e bye
 	gforth ptests/ptestF3.fs -e bye
